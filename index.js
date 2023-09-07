@@ -20,9 +20,7 @@ async function exportData() {
             `${sourceInstanceURL}/dataStore/${dataStoreNameSpace}`,
             { auth: sourceAuth }
         );
-        // console.log(data);
         for (const key of data) {
-            // console.log(key);
             const { data } = await axios.get(
                 `${sourceInstanceURL}/dataStore/${dataStoreNameSpace}/${key}`,
                 { auth: sourceAuth }
@@ -43,25 +41,8 @@ async function exportData() {
                 );
             }
         }
-        // await importData(data);
-        // console.log(data);
     } catch (error) {
         console.error("Error exporting data:", error.message);
     }
 }
-
-// async function importData(data) {
-//     try {
-//         const response = await axios.put(
-//             `${destinationInstanceURL}/dataStore/${dataStoreNameSpace}`,
-//             { auth: destinationAuth },
-//             data
-//         );
-
-//         console.log("Data imported successfully:", response.data);
-//     } catch (error) {
-//         console.error("Error importing data:", error.message);
-//     }
-// }
-
 exportData();
